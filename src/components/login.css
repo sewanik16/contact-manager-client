@@ -1,0 +1,113 @@
+.container{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+.circle-top{
+    background-color:#c2e1f7;
+    width:250px;
+    height: 250px;
+    position: absolute;
+    top:-50px;
+    left:-50px;
+    border-radius: 50%;
+}
+.circle-bottom{
+    background-color: #c2e1f7;
+    width:250px;
+    height: 250px;
+    position: fixed;
+    bottom:-50px;
+    right:-50px;
+    border-radius: 50%;
+}
+.centered-div{
+    width:1000px;
+    height: 400px;
+    display: flex;
+    background-color:aliceblue;
+    border-radius: 20px;
+}
+.centered-left{
+    width:20%;
+    height: 100%;
+    position: relative;
+}
+.centered-middle{
+    width:60%;
+    height: 100%;
+    position: relative;
+}
+.centered-right{
+    width:20%;
+    height: 100%;
+}
+.dot-left{
+    width: 150px;
+    height: 130px;
+    margin:22px;
+    position: relative;
+    top:220px;
+    padding: 4px;
+}
+ .dot-right span{
+    font-size: 14px;
+}
+.dot-right{
+    width: 150px;
+    height: 150px;
+    margin:22px;
+    position: relative;
+    top:0px
+}
+.centered-middle form{
+ width: 250px;
+ margin:auto;
+ padding: 10px;
+ height: 150px;
+ display: flex;
+ flex-direction: column;
+ justify-content: end;
+ position: absolute;
+ bottom: 50px;
+ left: 160px
+}
+.logo{
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    top:50px;
+    left:190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 20px;
+}
+.form-item{
+    margin-bottom: 10px;
+    padding:6px 10px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+}
+.form-btn-active{
+    background-color: #7D8CC4;
+    color:white
+}
+.dot-circle{
+    width: 14px;
+    height: 14px;
+    background-color: #c2e1f7;
+    border-radius: 50%;
+    margin:0px 3px;
+    display: inline-block;
+}
+form a{
+    font-size: 12px;
+    text-decoration: none;
+}
