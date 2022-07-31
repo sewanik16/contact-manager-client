@@ -1,9 +1,13 @@
 import Sidebar from "./sidebar";
+import "./contacts.css"
 import Header from "./header"
 import React from "react";
 import Modal from 'react-bootstrap/Modal';
 import AddForm from "./form";
 import {useState} from "react"
+import {AiFillDelete} from "react-icons/ai"
+import {MdImportExport} from "react-icons/md"
+import {BiDownload} from "react-icons/bi"
 
 function Contacts(){
     const [show, setShow] = useState(false);
@@ -25,9 +29,9 @@ function Contacts(){
                             <span> 🧮 Filters </span>
                         </div>
                         <div>
-                            <span> 🧺 Delete </span>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <span onClick={handleShow}> 🔃 Import</span>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <span>⬆️ Export</span>
+                            <span style={{color:"red"}}> <AiFillDelete size={"18px"}/> Delete </span>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span onClick={handleShow}> <MdImportExport size={"20px"}/> Import</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span><BiDownload size={"20px"}/> Export</span>
                         </div>
                     </div>
                     <div className="row2">
@@ -55,7 +59,8 @@ function Contacts(){
                     
                 </div>
             </div>
-            <Modal show={show} onHide={handleClose} centered style={{marginLeft:"45%",width:"200px"}}>
+            <Modal show={show} onHide={handleClose} animation={false} centered 
+            style={{marginLeft:"40%",marginTop:"10%",width:"300px",height:"300px",lineHeight:"40px",textAlign:"center"}}>
             {/* <Modal.Header closeButton>
                 <Modal.Title><img src="upload.png" style={{width:"50px",margin:"auto"}}/></Modal.Title>
             </Modal.Header> */}

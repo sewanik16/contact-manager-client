@@ -1,5 +1,7 @@
-import "./contacts.css"
+// import "./contacts.css"
 import {Link} from "react-router-dom"
+import {FiLogOut} from "react-icons/fi"
+import {MdContacts} from "react-icons/md"
 function Sidebar(){
     return(
         <>
@@ -9,10 +11,10 @@ function Sidebar(){
                         <br/>
                         <label> 📊 Dashboard</label>
                         <br/><br/>
-                        <button> 🔢 Total Contacts <b style={{fontSize:"16px"}}>|</b></button>
+                        <button> <MdContacts size={"16px"}/> Total Contacts <b style={{fontSize:"16px"}}>|</b></button>
                     </div>
                     <div className="sidebar-bottom">
-                        <Link to="/"> 🔄 Log out</Link>
+                        <Link to="/"> <FiLogOut size={"16px"}/> Log out</Link>
                     </div>
             </div>
         </>

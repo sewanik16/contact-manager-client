@@ -98,10 +98,10 @@ margin: 20px;
         padding: 2px 5px;
 }
 .row1 span{
-    box-shadow: 2px 2px 20px lightgray;
+    box-shadow: 2px 2px 16px gray;
     border-radius: 10px;
-    padding: 4px 8px;
-    font-size: 12px;
+    padding: 6px 12px;
+    font-size: 14px;
 }
 .row2{
     width: 98%;

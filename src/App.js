@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom"
 import Login from './components/login';
 import Signup from './components/signup';
 import Contacts from './components/contacts';
+import DragDrop from './testComponents/dragDrop';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<Login/>}></Route>
           <Route path="/signup" element={<Signup/>}></Route>
           <Route path="/contacts" element={<Contacts/>}></Route>
+          <Route path="/drag" element={<DragDrop/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
