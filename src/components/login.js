@@ -1,7 +1,29 @@
 import "./login.css";
-import {Link} from "react-router-dom"
+import {Link,useNavigate} from "react-router-dom"
+import {useState} from "react"
+import axios from "axios"
+
 
 function Login() {
+  let navigate = useNavigate()
+  const [login, setLogin] = useState({username: "", password: ""})
+  const handleLogin = (e)=> {
+    e.preventDefault()
+      axios({
+          url: "http://localhost:5000/user/login",
+          method: "POST",
+          headers: {
+          },
+          data: {username: login.username, password: login.password}
+      }).then((loginData)=> {
+         localStorage.setItem("authorization", loginData.data.authToken);
+         navigate("/contacts")
+      }).catch((err)=> {
+          console.log(err)
+      })
+    }
+
+
 
     let arr2=[1,1,1,1,1,1,1]
   return (
@@ -39,10 +61,10 @@ function Login() {
                 <br/>   
               <form>
              
-                <input className="form-item" type="text" placeholder="User ID" />
-                <input className="form-item" type="password" placeholder="Password" />
+                <input className="form-item" type="text" placeholder="User ID" onChange={(e)=> {setLogin({...login, username: e.target.value})}}/>
+                <input className="form-item" type="password" placeholder="Password" onChange={(e)=> {setLogin({...login, password: e.target.value})}}/>
                 <br/>
-                <button className="form-item form-btn-active">Sign in</button>
+                <button className="form-item form-btn-active" onClick={handleLogin}>Sign in</button>
                 <Link to="/signup">Sign up</Link>
                 
               </form>

@@ -3,7 +3,7 @@ import "./contacts.css"
 import Header from "./header"
 import React from "react";
 import Modal from 'react-bootstrap/Modal';
-import AddForm from "./form";
+import ImportForm from "./importForm";
 import {useState} from "react"
 import {AiFillDelete} from "react-icons/ai"
 import {MdImportExport} from "react-icons/md"
@@ -65,7 +65,7 @@ function Contacts(){
                 <Modal.Title><img src="upload.png" style={{width:"50px",margin:"auto"}}/></Modal.Title>
             </Modal.Header> */}
             <Modal.Body>
-               <AddForm/>
+               <ImportForm/>
             </Modal.Body>
 
             {/* <Modal.Footer>
