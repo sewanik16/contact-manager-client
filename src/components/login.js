@@ -2,13 +2,20 @@ import "./login.css";
 import {Link,useNavigate} from "react-router-dom"
 import {useState} from "react"
 import axios from "axios"
-
+import Modal from 'react-bootstrap/Modal';
+import {FiUserX} from "react-icons/fi"
 
 function Login() {
   let navigate = useNavigate()
   const [login, setLogin] = useState({username: "", password: ""})
+  const [show,setShow] = useState()
+
+  const handleShow = () =>{setShow(true)}
+  const handleClose = () =>{setShow(false)}
+
   const handleLogin = (e)=> {
     e.preventDefault()
+ 
       axios({
           url: "http://localhost:5000/user/login",
           method: "POST",
@@ -16,10 +23,13 @@ function Login() {
           },
           data: {username: login.username, password: login.password}
       }).then((loginData)=> {
-         localStorage.setItem("authorization", loginData.data.authToken);
+        console.log("login data",loginData)
+         localStorage.setItem("authorization", loginData.data.authorization);
+        
          navigate("/contacts")
       }).catch((err)=> {
-          console.log(err)
+          handleShow()
+          console.log("user not found")
       })
     }
 
@@ -59,12 +69,12 @@ function Login() {
                     
                 </div>
                 <br/>   
-              <form>
+              <form >
              
-                <input className="form-item" type="text" placeholder="User ID" onChange={(e)=> {setLogin({...login, username: e.target.value})}}/>
-                <input className="form-item" type="password" placeholder="Password" onChange={(e)=> {setLogin({...login, password: e.target.value})}}/>
+                <input required className="form-item" type="text" placeholder="User ID" onChange={(e)=> {setLogin({...login, username: e.target.value})}}/>
+                <input required className="form-item" type="password" placeholder="Password" onChange={(e)=> {setLogin({...login, password: e.target.value})}}/>
                 <br/>
-                <button className="form-item form-btn-active" onClick={handleLogin}>Sign in</button>
+                <button type="submit" className="form-item form-btn-active" onClick={handleLogin}>Sign in</button>
                 <Link to="/signup">Sign up</Link>
                 
               </form>
@@ -89,6 +99,16 @@ function Login() {
           </div>
         </div>
         <div className="circle-bottom"></div>
+      </div>
+
+      <div>
+      <Modal show={show} onHide={handleClose} animation={false} centered 
+            style={{height:"400px",textAlign:"center",color:"red"}}>
+            <Modal.Body>
+              <h3><FiUserX/></h3>
+               <h6>User not found || Something wrong</h6>
+            </Modal.Body>
+            </Modal>
       </div>
     </>
   );

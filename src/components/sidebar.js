@@ -3,6 +3,12 @@ import {Link} from "react-router-dom"
 import {FiLogOut} from "react-icons/fi"
 import {MdContacts} from "react-icons/md"
 function Sidebar(){
+    const logout = ()=>{
+        localStorage.setItem("authorization","")
+        // localStorage.setItem("authorization", loginData.data.authorization);
+        console.log(logout)
+    }
+    
     return(
         <>
             <div className="sidebar">
@@ -14,7 +20,7 @@ function Sidebar(){
                         <button> <MdContacts size={"16px"}/> Total Contacts <b style={{fontSize:"16px"}}>|</b></button>
                     </div>
                     <div className="sidebar-bottom">
-                        <Link to="/"> <FiLogOut size={"16px"}/> Log out</Link>
+                        <Link to="/"> <FiLogOut size={"16px"} /> <span onClick={logout}>Log out</span></Link>
                     </div>
             </div>
         </>

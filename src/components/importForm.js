@@ -1,62 +1,21 @@
-import React, { useState } from 'react'
-import {parse} from "papaparse"
-import axios from "axios"
 
-function ImportForm() {
-    const [value,setvalue]=useState("")
-    const Draghandler = (e)=>{
-        e.preventDefault()  
-    }
-    const authToken = localStorage.getItem("authorization");
-    const Drophandler = (e)=> {
-        e.preventDefault()
-       Array.from(e.dataTransfer.files).map(async file=>{
-        const text =await file.text()
-        let {data} = parse(text,{header:true})
-        if(data[data.length-1].Name===""){
-            data.pop()
-        }
-        console.log(data)
-        axios({
-          url: "http://localhost:5000/contacts/add",
-          method: "POST",
-          headers: {
-            authorization: authToken,
-            "Content-Type": "application/json"
-          },
-          data: data
-      }).then(()=> {
-         console.log("data saved successfully")
-      }).catch((err)=> {
-          console.log(err.message)
-      })
-       })
 
-    }
-    const filehandler =(e)=>{
-       Array.from(e.target.files).map(async file=>{
-        const text =await file.text()
-        let {data} = parse(text,{header:true})
-        if(data[data.length-1].Name===""){
-            data.pop()
-        }
-        console.log(data)
-        setvalue("")
-       })
-    }
+
+
+function ImportForm({f1,f2,f3,value,f4}) {
+      
   return (
-    <div style={{minHeight : "200px",textAlign:"center"}}
-    onDragOver={(e)=>Draghandler(e)}
-    onDrop ={(e)=>Drophandler(e)}
-    >
-      <img src='upload.png' style={{width:"30px"}} alt=""/>
-      <h6 style={{textAlign:"center",margin:"10px"}}>Import File</h6>
-      <input type="file" onChange={(e)=>filehandler(e)} value={value} id="File" style={{position:"absolute",display:"none"}}/>
-      <span>Drop Files Here</span> 
-      <br/><br/>
-      <button style={{padding:"0px 20px",background:"skyblue",border:"none",borderRadius:"4px",color:"white"}}>Cancel</button>
-
-    </div>
+    <div style={{ minHeight: "200px", textAlign: "center" }}
+            onDragOver={(e) => f1(e)}
+            onDrop={(e) => f2(e)}
+        >
+             <label htmlFor='File' className="filepic"><i className="material-icons">upload_file</i></label><br/>
+            <input type="file" onChange={(e)=>f3(e)} value={value} id="File" style={{position:"absolute",display:"none"}}/>
+            <h6 style={{ textAlign: "center", marginTop: "15px" ,fontWeight:"bold"}}>Import File</h6>
+            <span style={{color : "#2DA5FC"}}>Drag & Drop a CSV File to Upload</span>
+            <br />
+            <button style={{ padding: "0px 20px", background: "skyblue", border: "none", borderRadius: "4px", color: "white" }} onClick={(e) => f4(e)}>Cancel</button>
+        </div>
   )
 }
 

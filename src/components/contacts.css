@@ -98,7 +98,7 @@ margin: 20px;
         padding: 2px 5px;
 }
 .row1 span{
-    box-shadow: 2px 2px 16px gray;
+    box-shadow: 2px 2px 16px lightgray;
     border-radius: 10px;
     padding: 6px 12px;
     font-size: 14px;
@@ -123,4 +123,18 @@ margin: 20px;
     padding: 2px 5px;
     font-size: 12px;
     border-bottom: 0.5px solid lightblue
+}
+
+.filepic{
+    background-color: #85C3EF;
+    padding: 2px 12px;
+    border-radius: 25px;
+}
+.filepic .material-icons{
+    margin-top: 5px;
+    margin-bottom: 1px;
+}
+
+.rowchild:nth-child(1){
+    color:red
 }
